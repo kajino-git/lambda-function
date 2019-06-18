@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: EC2 start
+Resources:
+  RedshiftEC2start:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: .
+      Description: EC2 start
+      MemorySize: 128
+      Timeout: 240
+      Role: '+++++++'
+      Events:
+        Schedule1:
+          Type: Schedule
+          Properties:
+            Schedule: cron(30 22 ? * * *)
+      Environment:
+        Variables:
+          CUSTOM_LOG_GROUP: +++++++
+          CUSTOM_LOG_STREAM: +++++++
+          INSTANCE_ID: +++++++
+          SUBJECT: EC2 boot failed
+          TOPIC_ARN: '+++++++'

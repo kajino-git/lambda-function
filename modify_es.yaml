@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Modify ES instance Up or Down from CloudWatch Events
+Resources:
+  UCModifyESUp:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: .
+      Description: Modify ES instance Up or Down from CloudWatch Events
+      MemorySize: 128
+      Timeout: 300
+      Role: '+++++++'
+      Events:
+        Schedule1:
+          Type: Schedule
+          Properties:
+            Schedule: cron(30 23 ? * SUN-THU *)
+      Environment:
+        Variables:
+          CUSTOM_LOG_GROUP: +++++++
+          CUSTOM_LOG_STREAM: +++++++
+          ES_INSTANCE_NAME: +++++++
+          INSTANCE_TYPE: +++++++
+      Tags:
+        SystemName: +++++++
+        Name: +++++++

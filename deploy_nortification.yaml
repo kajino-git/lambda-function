@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Redshift Deploy
+Resources:
+  RedshiftDeployNortification:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: .
+      Description: Redshift Deploy
+      MemorySize: 128
+      Timeout: 180
+      Role: '+++++++'
+      Environment:
+        Variables:
+          CUSTOM_LOG_GROUP: +++++++
+          CUSTOM_LOG_STREAM: +++++++
+          ROOM: '+++++++'
+          TOKEN: +++++++
+          URL: 'https://api.chatwork.com/v2'
+          APP: +++++++
+          GROUP_DEV: +++++++
+          GROUP_PROD: +++++++
+          GROUP_PIPELINE: +++++++

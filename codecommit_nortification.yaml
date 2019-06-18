@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: CodeCommit Push and Pull request
+Resources:
+  RedshiftCodeCommitNortification:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: .
+      Description: CodeCommit Push and Pull request
+      MemorySize: 128
+      Timeout: 182
+      Role: '+++++++'
+      Events:
+        CloudWatchEvent1:
+          Type: CloudWatchEvent
+          Properties:
+            Pattern:
+              detail-type:
+                - CodeCommit Pull Request State Change
+                - CodeCommit Comment on Pull Request
+                - CodeCommit Comment on Commit
+              resources:
+                - '+++++++'
+              source:
+                - aws.codecommit
+      Environment:
+        Variables:
+          CHAT_URL: 'https://api.chatwork.com/v2'
+          TOKEN: +++++++
+          ROOM: '+++++++'
+          BASE_URL: >-
+            +++++++
+          CUSTOM_LOG_GROUP: +++++++
+          CUSTOM_LOG_STREAM: +++++++
